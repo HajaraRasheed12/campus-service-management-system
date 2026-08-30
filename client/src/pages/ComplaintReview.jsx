@@ -69,7 +69,7 @@ function ComplaintReview() {
 
         // Get complaints from MongoDB
         const response = await fetch(
-          "http://localhost:5000/api/complaints"
+          "https://campus-service-management-system.onrender.com/api/complaints"
         );
 
         if (!response.ok) {
@@ -164,7 +164,7 @@ function ComplaintReview() {
 
       // Send update to MongoDB through backend
       const response = await fetch(
-        `http://localhost:5000/api/complaints/${complaint.id}`,
+        `https://campus-service-management-system.onrender.com/api/complaints/${complaint.id}`,
         {
           method: "PUT",
 

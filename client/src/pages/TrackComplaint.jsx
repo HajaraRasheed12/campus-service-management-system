@@ -18,21 +18,11 @@ import "./TrackComplaint.css";
 
 function TrackComplaint() {
 
-  // =========================
-  // STATE
-  // =========================
-
   const [studentId, setStudentId] = useState("");
-
   const [complaints, setComplaints] = useState([]);
-
-  const [selectedComplaint, setSelectedComplaint] =
-    useState(null);
-
+  const [selectedComplaint, setSelectedComplaint] = useState(null);
   const [error, setError] = useState("");
-
   const [searched, setSearched] = useState(false);
-
 
   // =========================
   // GO HOME
@@ -41,7 +31,6 @@ function TrackComplaint() {
   const goHome = () => {
     window.location.href = "/";
   };
-
 
   // =========================
   // FIND STUDENT COMPLAINTS
@@ -56,34 +45,23 @@ function TrackComplaint() {
     setSelectedComplaint(null);
     setSearched(false);
 
-
     if (!studentId.trim()) {
-
       setError("Please enter your Student ID.");
-
       return;
     }
-
 
     try {
 
       // Get complaints from MongoDB
       const response = await fetch(
-        "http://localhost:5000/api/complaints"
+        "https://campus-service-management-system.onrender.com/api/complaints"
       );
 
-
       if (!response.ok) {
-
-        throw new Error(
-          "Failed to fetch complaints"
-        );
-
+        throw new Error("Failed to fetch complaints");
       }
 
-
       const data = await response.json();
-
 
       // Find all complaints belonging to this student
       const studentComplaints = data.filter(
@@ -92,7 +70,6 @@ function TrackComplaint() {
           item.studentId.toUpperCase() ===
             studentId.trim().toUpperCase()
       );
-
 
       if (studentComplaints.length === 0) {
 
@@ -104,7 +81,6 @@ function TrackComplaint() {
 
         return;
       }
-
 
       // Show all complaints belonging to student
       setComplaints(studentComplaints);
@@ -125,7 +101,6 @@ function TrackComplaint() {
     }
 
   };
-
 
   // =========================
   // SELECT COMPLAINT
@@ -155,7 +130,6 @@ function TrackComplaint() {
 
   };
 
-
   // =========================
   // STATUS ORDER
   // =========================
@@ -166,7 +140,6 @@ function TrackComplaint() {
     "In Progress",
     "Resolved",
   ];
-
 
   // =========================
   // GET CURRENT STATUS INDEX
@@ -182,7 +155,6 @@ function TrackComplaint() {
       : index;
 
   };
-
 
   // =========================
   // DISPLAY CATEGORY
@@ -206,10 +178,8 @@ function TrackComplaint() {
 
   };
 
-
   return (
     <div className="track-page">
-
 
       {/* =========================
           HEADER
@@ -224,7 +194,6 @@ function TrackComplaint() {
 
         <div className="track-header-overlay"></div>
 
-
         <div className="track-header-content">
 
           <div className="track-college-brand">
@@ -234,7 +203,6 @@ function TrackComplaint() {
               alt="LBS Institute of Technology for Women Logo"
               className="track-logo"
             />
-
 
             <div className="track-college-info">
 
@@ -254,7 +222,6 @@ function TrackComplaint() {
 
           </div>
 
-
           <button
             className="track-back-btn"
             onClick={goHome}
@@ -273,7 +240,6 @@ function TrackComplaint() {
 
       </header>
 
-
       {/* =========================
           MAIN
       ========================= */}
@@ -281,7 +247,6 @@ function TrackComplaint() {
       <main className="track-main">
 
         <div className="track-card">
-
 
           {/* =========================
               HEADING
@@ -293,7 +258,6 @@ function TrackComplaint() {
               Track My Complaints
             </h1>
 
-
             <div className="track-divider">
 
               <span></span>
@@ -304,13 +268,11 @@ function TrackComplaint() {
 
             </div>
 
-
             <p>
               Enter your Student ID to view all your complaints.
             </p>
 
           </div>
-
 
           {/* =========================
               STUDENT ID SEARCH FORM
@@ -330,11 +292,9 @@ function TrackComplaint() {
 
               </label>
 
-
               <div className="track-input-wrapper">
 
                 <Search size={20} />
-
 
                 <input
                   type="text"
@@ -354,7 +314,6 @@ function TrackComplaint() {
 
               </div>
 
-
               {/* ERROR */}
 
               {error && (
@@ -366,7 +325,6 @@ function TrackComplaint() {
               )}
 
             </div>
-
 
             <button
               type="submit"
@@ -382,7 +340,6 @@ function TrackComplaint() {
             </button>
 
           </form>
-
 
           {/* =========================
               COMPLAINT LIST
@@ -403,11 +360,9 @@ function TrackComplaint() {
 
               </div>
 
-
               <h2 className="status-title">
                 Your Complaints
               </h2>
-
 
               <p
                 style={{
@@ -416,11 +371,8 @@ function TrackComplaint() {
                   opacity: 0.75,
                 }}
               >
-
                 Select a complaint to view its current status.
-
               </p>
-
 
               <div
                 style={{
@@ -472,11 +424,8 @@ function TrackComplaint() {
                           <strong
                             className="complaint-id-text"
                           >
-
                             {complaint.id}
-
                           </strong>
-
 
                           <p
                             style={{
@@ -486,13 +435,10 @@ function TrackComplaint() {
                                 "600",
                             }}
                           >
-
                             {getDisplayCategory(
                               complaint
                             )}
-
                           </p>
-
 
                           <span
                             style={{
@@ -502,14 +448,11 @@ function TrackComplaint() {
                                 0.7,
                             }}
                           >
-
                             Submitted on{" "}
                             {complaint.date}
-
                           </span>
 
                         </div>
-
 
                         <div
                           style={{
@@ -526,11 +469,8 @@ function TrackComplaint() {
                               complaint.status
                             }`}
                           >
-
                             {complaint.status}
-
                           </span>
-
 
                           <button
                             type="button"
@@ -576,7 +516,6 @@ function TrackComplaint() {
 
           )}
 
-
           {/* =========================
               SELECTED COMPLAINT TRACKING
           ========================= */}
@@ -598,20 +537,15 @@ function TrackComplaint() {
 
               </div>
 
-
               <h2 className="status-title">
                 Complaint Status
               </h2>
-
 
               {/* =========================
                   COMPLAINT DETAILS
               ========================= */}
 
               <div className="complaint-details">
-
-
-                {/* Complaint ID */}
 
                 <div className="detail-row">
 
@@ -620,15 +554,10 @@ function TrackComplaint() {
                   </span>
 
                   <strong className="complaint-id-text">
-
                     {selectedComplaint.id}
-
                   </strong>
 
                 </div>
-
-
-                {/* Student Name */}
 
                 <div className="detail-row">
 
@@ -637,15 +566,10 @@ function TrackComplaint() {
                   </span>
 
                   <strong>
-
                     {selectedComplaint.studentName}
-
                   </strong>
 
                 </div>
-
-
-                {/* Student ID */}
 
                 <div className="detail-row">
 
@@ -654,15 +578,10 @@ function TrackComplaint() {
                   </span>
 
                   <strong>
-
                     {selectedComplaint.studentId}
-
                   </strong>
 
                 </div>
-
-
-                {/* Category */}
 
                 <div className="detail-row">
 
@@ -671,17 +590,12 @@ function TrackComplaint() {
                   </span>
 
                   <strong>
-
                     {getDisplayCategory(
                       selectedComplaint
                     )}
-
                   </strong>
 
                 </div>
-
-
-                {/* Regarding */}
 
                 {selectedComplaint.regarding &&
                   selectedComplaint.category !==
@@ -694,17 +608,12 @@ function TrackComplaint() {
                     </span>
 
                     <strong>
-
                       {selectedComplaint.regarding}
-
                     </strong>
 
                   </div>
 
                 )}
-
-
-                {/* Submitted Date */}
 
                 <div className="detail-row">
 
@@ -713,15 +622,10 @@ function TrackComplaint() {
                   </span>
 
                   <strong>
-
                     {selectedComplaint.date}
-
                   </strong>
 
                 </div>
-
-
-                {/* Description */}
 
                 <div className="detail-row description-row">
 
@@ -730,15 +634,12 @@ function TrackComplaint() {
                   </span>
 
                   <strong>
-
                     {selectedComplaint.description}
-
                   </strong>
 
                 </div>
 
               </div>
-
 
               {/* =========================
                   STATUS TIMELINE
@@ -752,7 +653,6 @@ function TrackComplaint() {
                     getStatusIndex(
                       selectedComplaint.status
                     );
-
 
                   return (
                     <>
@@ -775,7 +675,6 @@ function TrackComplaint() {
 
                         </div>
 
-
                         <div className="status-content">
 
                           <h3>
@@ -789,7 +688,6 @@ function TrackComplaint() {
                         </div>
 
                       </div>
-
 
                       {/* UNDER REVIEW */}
 
@@ -811,7 +709,6 @@ function TrackComplaint() {
 
                         </div>
 
-
                         <div className="status-content">
 
                           <h3>
@@ -829,7 +726,6 @@ function TrackComplaint() {
                         </div>
 
                       </div>
-
 
                       {/* IN PROGRESS */}
 
@@ -851,7 +747,6 @@ function TrackComplaint() {
 
                         </div>
 
-
                         <div className="status-content">
 
                           <h3>
@@ -870,7 +765,6 @@ function TrackComplaint() {
 
                       </div>
 
-
                       {/* RESOLVED */}
 
                       <div
@@ -888,7 +782,6 @@ function TrackComplaint() {
                           />
 
                         </div>
-
 
                         <div className="status-content">
 
@@ -915,7 +808,6 @@ function TrackComplaint() {
 
               </div>
 
-
               {/* =========================
                   AUTHORITY RESPONSE
               ========================= */}
@@ -934,7 +826,6 @@ function TrackComplaint() {
 
                   </div>
 
-
                   <div className="authority-response-content">
 
                     <h3>
@@ -942,11 +833,9 @@ function TrackComplaint() {
                     </h3>
 
                     <p>
-
                       {
                         selectedComplaint.resolutionMessage
                       }
-
                     </p>
 
                   </div>
@@ -958,7 +847,6 @@ function TrackComplaint() {
             </div>
 
           )}
-
 
           {/* =========================
               EMPTY STATE
@@ -975,16 +863,13 @@ function TrackComplaint() {
               </h2>
 
               <p>
-
                 Enter your Student ID above to view
                 all complaints submitted by you.
-
               </p>
 
             </div>
 
           )}
-
 
           {/* =========================
               INFORMATION NOTE
@@ -1003,10 +888,8 @@ function TrackComplaint() {
               </strong>
 
               <p>
-
                 Enter your Student ID to view all complaints
                 submitted under your account.
-
               </p>
 
             </div>
@@ -1016,7 +899,6 @@ function TrackComplaint() {
         </div>
 
       </main>
-
 
       {/* =========================
           FOOTER
@@ -1034,7 +916,6 @@ function TrackComplaint() {
 
         </div>
 
-
         <div className="track-footer-item">
 
           <Phone size={19} />
@@ -1044,7 +925,6 @@ function TrackComplaint() {
           </span>
 
         </div>
-
 
         <div className="track-footer-item">
 

@@ -61,7 +61,7 @@ function AdminDashboard() {
       try {
 
         const response = await fetch(
-          "http://localhost:5000/api/complaints"
+          "https://campus-service-management-system.onrender.com/api/complaints"
         );
 
         if (!response.ok) {

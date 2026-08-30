@@ -51,18 +51,23 @@ function Complaint() {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/complaints", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newComplaint),
-      });
+      const response = await fetch(
+        "https://campus-service-management-system.onrender.com/api/complaints",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newComplaint),
+        }
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to submit complaint.");
+        throw new Error(
+          data.message || "Failed to submit complaint."
+        );
       }
 
       setComplaintId(data.complaint.id);
