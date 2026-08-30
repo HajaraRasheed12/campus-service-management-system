@@ -20,6 +20,7 @@ const complaintSchema = new mongoose.Schema({
   id: {
     type: String,
     unique: true,
+    required: true,
   },
 
   studentName: {
@@ -101,43 +102,103 @@ app.post("/api/complaints", async (req, res) => {
       });
     }
 
-    // Count existing complaints
-    const complaintCount = await Complaint.countDocuments();
+    // =========================
+    // GENERATE NEXT COMPLAINT ID
+    // =========================
+    //
+    // Do NOT use countDocuments().
+    // Deleted complaints can cause duplicate IDs.
+    //
+    // Example:
+    // 0001
+    // 0002
+    // 0004
+    //
+    // Next ID will correctly become:
+    // 0005
+    //
 
-    // Generate complaint ID
-    const complaintNumber = complaintCount + 1;
+    const lastComplaint = await Complaint.findOne({
+      id: /^LBS-2026-/,
+    }).sort({ id: -1 });
+
+    let complaintNumber = 1;
+
+    if (lastComplaint && lastComplaint.id) {
+      const match = lastComplaint.id.match(
+        /LBS-2026-(\d+)$/
+      );
+
+      if (match) {
+        complaintNumber = parseInt(match[1], 10) + 1;
+      }
+    }
 
     const complaintId = `LBS-2026-${String(
       complaintNumber
     ).padStart(4, "0")}`;
 
-    // Current date
-    const currentDate = new Date().toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-    });
+    // =========================
+    // CURRENT DATE
+    // =========================
 
-    // Create complaint
+    const currentDate = new Date().toLocaleDateString(
+      "en-GB",
+      {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      }
+    );
+
+    // =========================
+    // CREATE COMPLAINT
+    // =========================
+
     const newComplaint = new Complaint({
       id: complaintId,
+
       studentName: studentName.trim(),
+
       studentId: studentId.trim(),
+
       category,
-      regarding: regarding || "",
+
+      regarding: regarding
+        ? regarding.trim()
+        : "",
+
       description: description.trim(),
+
       date: currentDate,
+
       status: "Under Review",
+
       resolutionMessage: "",
     });
 
-    // Save to MongoDB
-    const savedComplaint = await newComplaint.save();
+    // =========================
+    // SAVE TO MONGODB
+    // =========================
 
-    console.log("New complaint saved:", savedComplaint.id);
+    const savedComplaint =
+      await newComplaint.save();
+
+    console.log(
+      "New complaint saved:",
+      savedComplaint.id
+    );
+
+    // =========================
+    // RESPONSE
+    // =========================
 
     res.status(201).json({
       message: "Complaint submitted successfully.",
+
+      // Included for frontend compatibility
+      complaintId: savedComplaint.id,
+
       complaint: {
         id: savedComplaint.id,
         studentName: savedComplaint.studentName,
@@ -147,15 +208,21 @@ app.post("/api/complaints", async (req, res) => {
         description: savedComplaint.description,
         date: savedComplaint.date,
         status: savedComplaint.status,
-        resolutionMessage: savedComplaint.resolutionMessage,
+        resolutionMessage:
+          savedComplaint.resolutionMessage,
       },
     });
 
   } catch (error) {
-    console.error("Error saving complaint:", error);
+
+    console.error(
+      "Error saving complaint:",
+      error
+    );
 
     res.status(500).json({
       message: "Failed to save complaint.",
+      error: error.message,
     });
   }
 });
@@ -166,12 +233,19 @@ app.post("/api/complaints", async (req, res) => {
 
 app.get("/api/complaints", async (req, res) => {
   try {
-    const complaints = await Complaint.find().sort({ _id: -1 });
+
+    const complaints =
+      await Complaint.find()
+        .sort({ _id: -1 });
 
     res.json(complaints);
 
   } catch (error) {
-    console.error("Error fetching complaints:", error);
+
+    console.error(
+      "Error fetching complaints:",
+      error
+    );
 
     res.status(500).json({
       message: "Failed to fetch complaints.",
@@ -185,8 +259,13 @@ app.get("/api/complaints", async (req, res) => {
 
 app.put("/api/complaints/:id", async (req, res) => {
   try {
+
     const { id } = req.params;
-    const { status, resolutionMessage } = req.body;
+
+    const {
+      status,
+      resolutionMessage,
+    } = req.body;
 
     // Validate status
     const allowedStatuses = [
@@ -203,7 +282,8 @@ app.put("/api/complaints/:id", async (req, res) => {
     }
 
     // Find complaint
-    const complaint = await Complaint.findOne({ id });
+    const complaint =
+      await Complaint.findOne({ id });
 
     if (!complaint) {
       return res.status(404).json({
@@ -216,11 +296,13 @@ app.put("/api/complaints/:id", async (req, res) => {
 
     // Update resolution message if provided
     if (resolutionMessage !== undefined) {
-      complaint.resolutionMessage = resolutionMessage.trim();
+      complaint.resolutionMessage =
+        resolutionMessage.trim();
     }
 
     // Save changes
-    const updatedComplaint = await complaint.save();
+    const updatedComplaint =
+      await complaint.save();
 
     console.log(
       `Complaint ${updatedComplaint.id} updated to ${updatedComplaint.status}`
@@ -232,7 +314,11 @@ app.put("/api/complaints/:id", async (req, res) => {
     });
 
   } catch (error) {
-    console.error("Error updating complaint:", error);
+
+    console.error(
+      "Error updating complaint:",
+      error
+    );
 
     res.status(500).json({
       message: "Failed to update complaint.",
@@ -246,16 +332,28 @@ app.put("/api/complaints/:id", async (req, res) => {
 
 mongoose
   .connect(process.env.MONGODB_URI)
+
   .then(() => {
-    console.log("MongoDB connected successfully");
+
+    console.log(
+      "MongoDB connected successfully"
+    );
 
     app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
+
+      console.log(
+        `Server running on http://localhost:${PORT}`
+      );
+
     });
+
   })
+
   .catch((error) => {
+
     console.error(
       "MongoDB connection failed:",
       error.message
     );
+
   });
