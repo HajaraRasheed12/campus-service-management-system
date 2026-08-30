@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+
+  /* Allow other pages to scroll */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+button {
+  font-family: inherit;
+}
+
+
+/* =========================
+   MAIN PAGE
+========================= */
+
+.landing-page {
+  width: 100%;
+  height: 100vh;
+
+  position: relative;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  /* Home page stays fixed to one screen */
+  overflow: hidden;
+}
+
+
+/* =========================
+   DARK OVERLAY
+========================= */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.62);
+
+  z-index: 0;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  width: 100%;
+
+  padding: 16px 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================
+   COLLEGE BRAND
+========================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.college-logo {
+  width: 66px;
+  height: 66px;
+
+  object-fit: contain;
+
+  filter: brightness(1.08) contrast(1.05);
+
+  border-radius: 6px;
+}
+
+.brand-text h2 {
+  font-size: 22px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  color: white;
+}
+
+.brand-text span {
+  display: block;
+
+  color: #e8c45b;
+
+  font-size: 11px;
+
+  margin-top: 2px;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 20px;
+
+  background: rgba(0, 0, 0, 0.25);
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+
+  border-radius: 9px;
+
+  color: white;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: white;
+
+  color: black;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  flex: 1;
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 0 20px;
+}
+
+
+/* =========================
+   COLLEGE NAME
+========================= */
+
+.college-name {
+  font-size: clamp(23px, 2.8vw, 40px);
+
+  line-height: 1.12;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-shadow:
+    0 3px 15px rgba(0, 0, 0, 0.85);
+}
+
+
+/* =========================
+   GOLD DIVIDER
+========================= */
+
+.gold-line {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin: 9px 0 6px;
+
+  color: #e8c45b;
+
+  font-size: 17px;
+}
+
+.gold-line::before,
+.gold-line::after {
+  content: "";
+
+  width: 95px;
+
+  height: 1px;
+
+  background: #e8c45b;
+}
+
+
+/* =========================
+   TAGLINE
+========================= */
+
+.tagline {
+  color: #e8c45b;
+
+  font-size: clamp(15px, 1.5vw, 21px);
+
+  font-weight: 500;
+
+  margin-bottom: 9px;
+}
+
+
+/* =========================
+   PROJECT TITLE
+========================= */
+
+.hero-content h1 {
+  color: #f08aae;
+
+  font-size: clamp(20px, 2.2vw, 32px);
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  margin-bottom: 5px;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+  color: #f1f1f1;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  margin-bottom: 18px;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.action-buttons {
+  display: flex;
+
+  gap: 20px;
+}
+
+.action-btn {
+  width: 255px;
+
+  height: 78px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-5px);
+}
+
+
+/* Button text */
+
+.action-btn span {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  font-size: 15px;
+}
+
+.action-btn strong {
+  font-size: 21px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   COMPLAINT BUTTON
+========================= */
+
+.complaint-btn {
+  background: linear-gradient(
+    135deg,
+    #db5b82,
+    #b83268
+  );
+
+  box-shadow:
+    0 10px 25px rgba(190, 45, 100, 0.30);
+}
+
+
+/* =========================
+   TRACK BUTTON
+========================= */
+
+.track-btn {
+  background: linear-gradient(
+    135deg,
+    #566bd1,
+    #30368e
+  );
+
+  box-shadow:
+    0 10px 25px rgba(45, 60, 180, 0.30);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+
+  padding: 11px 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 55px;
+}
+
+.footer-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #ddd;
+
+  font-size: 11px;
+}
+
+.footer-item svg {
+  color: #f08aae;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+
+  .navbar {
+    padding: 14px 20px;
+  }
+
+  .college-logo {
+    width: 54px;
+    height: 54px;
+  }
+
+  .brand-text h2 {
+    font-size: 19px;
+  }
+
+  .brand-text span {
+    font-size: 9px;
+  }
+
+  .college-name {
+    font-size: 27px;
+  }
+
+  .tagline {
+    font-size: 17px;
+  }
+
+  .hero-content h1 {
+    font-size: 23px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .action-btn {
+    width: 260px;
+
+    height: 72px;
+  }
+
+  .footer {
+    display: none;
+  }
+}
+
+
+/* =========================
+   SMALL HEIGHT SCREENS
+========================= */
+
+@media (max-height: 700px) {
+
+  .navbar {
+    padding: 9px 30px;
+  }
+
+  .college-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .college-name {
+    font-size: 31px;
+  }
+
+  .gold-line {
+    margin: 5px 0;
+  }
+
+  .tagline {
+    margin-bottom: 5px;
+  }
+
+  .description {
+    margin-bottom: 11px;
+  }
+
+  .action-btn {
+    height: 68px;
+  }
+
+  .footer {
+    padding: 7px 30px;
+  }
+}

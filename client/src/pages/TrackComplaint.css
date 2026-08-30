@@ -1,0 +1,1210 @@
+/* =========================
+   MAIN PAGE
+========================= */
+
+.track-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 10% 80%,
+      rgba(86, 107, 209, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(86, 107, 209, 0.08),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #050505,
+      #080b14,
+      #10131d
+    );
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.track-header {
+  width: 100%;
+  height: 135px;
+
+  position: relative;
+
+  background-size: cover;
+  background-position: center 55%;
+  background-repeat: no-repeat;
+
+  border-bottom: 2px solid #566bd1;
+
+  flex-shrink: 0;
+}
+
+.track-header-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.94),
+      rgba(0, 0, 0, 0.72),
+      rgba(0, 0, 0, 0.94)
+    );
+}
+
+.track-header-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 18px 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+/* =========================
+   COLLEGE BRAND
+========================= */
+
+.track-college-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+.track-logo {
+  width: 66px;
+  height: 66px;
+
+  object-fit: contain;
+
+  background: white;
+
+  border-radius: 7px;
+
+  padding: 4px;
+
+  flex-shrink: 0;
+}
+
+.track-college-info {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.track-college-info h2 {
+  font-size: 20px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  margin-bottom: 4px;
+
+  color: white;
+}
+
+.track-location {
+  color: #d0d0d0;
+
+  font-size: 11px;
+
+  margin-bottom: 3px;
+}
+
+.track-tagline {
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.track-back-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 18px;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  color: white;
+
+  border: 1px solid rgba(86, 107, 209, 0.85);
+
+  border-radius: 8px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.track-back-btn:hover {
+  background: #566bd1;
+
+  border-color: #566bd1;
+
+  color: white;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.track-main {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  padding: 35px 20px 55px;
+
+  flex: 1;
+}
+
+
+/* =========================
+   TRACK CARD
+========================= */
+
+.track-card {
+  width: 100%;
+
+  max-width: 900px;
+
+  padding: 32px 50px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #151820,
+      #0d1017
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+
+  border-top: 3px solid #566bd1;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.55);
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.track-heading {
+  text-align: center;
+
+  margin-bottom: 28px;
+}
+
+.track-heading h1 {
+  color: white;
+
+  font-size: 29px;
+
+  font-weight: 700;
+
+  margin-bottom: 9px;
+}
+
+.track-divider {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-bottom: 9px;
+}
+
+.track-divider span {
+  width: 65px;
+
+  height: 2px;
+
+  background: #566bd1;
+}
+
+.track-divider b {
+  color: #566bd1;
+
+  font-size: 16px;
+}
+
+.track-heading p {
+  color: #999aaa;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.track-form-group {
+  margin-bottom: 18px;
+}
+
+.track-form-group label {
+  display: block;
+
+  color: #eeeeee;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  margin-bottom: 8px;
+}
+
+.track-form-group label span {
+  color: #6f82e8;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.track-input-wrapper {
+  width: 100%;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 14px;
+
+  background: #080a10;
+
+  border: 1px solid #303542;
+
+  border-radius: 8px;
+
+  transition: all 0.25s ease;
+}
+
+.track-input-wrapper svg {
+  color: #566bd1;
+
+  flex-shrink: 0;
+}
+
+.track-input-wrapper:focus-within {
+  border-color: #566bd1;
+
+  box-shadow:
+    0 0 0 2px rgba(86, 107, 209, 0.12);
+}
+
+.track-input-wrapper input {
+  width: 100%;
+
+  height: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: white;
+
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 13px;
+}
+
+.track-input-wrapper input::placeholder {
+  color: #666979;
+}
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.track-error {
+  color: #ff6b8f;
+
+  font-size: 12px;
+
+  margin-top: 8px;
+
+  padding-left: 2px;
+}
+
+
+/* =========================
+   TRACK BUTTON
+========================= */
+
+.track-submit-btn {
+  width: 100%;
+
+  min-height: 50px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  padding: 13px 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #566bd1,
+      #30368e
+    );
+
+  color: white;
+
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(45, 60, 180, 0.20);
+
+  transition: all 0.3s ease;
+}
+
+.track-submit-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(45, 60, 180, 0.38);
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.track-empty {
+  margin-top: 30px;
+
+  padding: 35px 25px;
+
+  text-align: center;
+
+  background: #090b11;
+
+  border: 1px solid rgba(86, 107, 209, 0.25);
+
+  border-radius: 10px;
+}
+
+.track-empty svg {
+  color: #566bd1;
+
+  margin-bottom: 12px;
+}
+
+.track-empty h2 {
+  color: white;
+
+  font-size: 18px;
+
+  margin-bottom: 7px;
+}
+
+.track-empty p {
+  color: #85899b;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  max-width: 500px;
+
+  margin: 0 auto;
+}
+
+.track-empty strong {
+  color: #6f82e8;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.track-result {
+  margin-top: 30px;
+}
+
+.result-divider {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-bottom: 22px;
+}
+
+.result-divider span {
+  flex: 1;
+
+  height: 1px;
+
+  background: rgba(86, 107, 209, 0.35);
+}
+
+.result-divider b {
+  color: #566bd1;
+
+  font-size: 15px;
+}
+
+.status-title {
+  text-align: center;
+
+  color: white;
+
+  font-size: 21px;
+
+  margin-bottom: 18px;
+}
+
+
+/* =====================================================
+   NEW
+   STUDENT COMPLAINT LIST
+===================================================== */
+
+.track-result > div[style*="border-radius: 12px"] {
+  color: #173d4a;
+}
+
+
+/* Complaint ID */
+
+.track-result
+  div[style*="border-radius: 12px"]
+  .complaint-id-text {
+  color: #566bd1;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* Category */
+
+.track-result
+  div[style*="border-radius: 12px"]
+  p {
+  color: #173d4a;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+/* Submitted date */
+
+.track-result
+  div[style*="border-radius: 12px"]
+  span {
+  color: #687b83;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   STATUS BADGE
+========================= */
+
+.status-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* Pending */
+
+.status-badge.Pending {
+  background: #fff4d6;
+
+  color: #9a6a00;
+}
+
+
+/* Under Review */
+
+.status-badge.Under\ Review {
+  background: #e8edff;
+
+  color: #465bb5;
+}
+
+
+/* In Progress */
+
+.status-badge.In\ Progress {
+  background: #e5f1ff;
+
+  color: #1769aa;
+}
+
+
+/* Resolved */
+
+.status-badge.Resolved {
+  background: #e5f6ee;
+
+  color: #13734b;
+}
+
+
+/* =========================
+   TRACK BUTTON INSIDE LIST
+========================= */
+
+.track-result
+  div[style*="border-radius: 12px"]
+  button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  background: #f0f1f3;
+
+  color: #17202a;
+
+  border: none;
+
+  font-family: 'Poppins', sans-serif;
+
+  transition: all 0.25s ease;
+}
+
+.track-result
+  div[style*="border-radius: 12px"]
+  button:hover {
+  background: #566bd1;
+
+  color: white;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   COMPLAINT DETAILS
+========================= */
+
+.complaint-details {
+  background: #090b11;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 9px;
+
+  padding: 5px 18px;
+
+  margin-bottom: 25px;
+}
+
+.detail-row {
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 10px 0;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row span {
+  color: #888c9c;
+
+  font-size: 12px;
+}
+
+.detail-row strong {
+  color: #e5e6eb;
+
+  font-size: 12px;
+
+  text-align: right;
+}
+
+.detail-row:first-child strong {
+  color: #6f82e8;
+
+  letter-spacing: 1px;
+}
+
+.description-row {
+  align-items: flex-start;
+}
+
+
+/* =========================
+   STATUS TIMELINE
+========================= */
+
+.status-timeline {
+  position: relative;
+
+  padding: 5px 15px 5px 10px;
+}
+
+.status-item {
+  position: relative;
+
+  display: flex;
+
+  gap: 14px;
+
+  min-height: 82px;
+}
+
+.status-item::before {
+  content: "";
+
+  position: absolute;
+
+  left: 11px;
+
+  top: 28px;
+
+  width: 2px;
+
+  height: 55px;
+
+  background: #303542;
+}
+
+.status-item:last-child::before {
+  display: none;
+}
+
+.status-icon {
+  position: relative;
+
+  z-index: 2;
+
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #555a69;
+
+  background: #151820;
+
+  border-radius: 50%;
+}
+
+.status-content {
+  padding-bottom: 18px;
+}
+
+.status-content h3 {
+  color: #777b8b;
+
+  font-size: 14px;
+
+  margin-bottom: 4px;
+}
+
+.status-content p {
+  color: #5f6372;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+
+/* Completed */
+
+.status-item.completed .status-icon {
+  color: #566bd1;
+}
+
+.status-item.completed::before {
+  background: #566bd1;
+}
+
+.status-item.completed .status-content h3 {
+  color: #566bd1;
+}
+
+.status-item.completed .status-content p {
+  color: #85899b;
+}
+
+
+/* Current */
+
+.status-item.current .status-icon {
+  color: #6f82e8;
+
+  filter:
+    drop-shadow(0 0 7px rgba(86, 107, 209, 0.45));
+}
+
+.status-item.current .status-content h3 {
+  color: #6f82e8;
+
+  font-weight: 600;
+}
+
+.status-item.current .status-content p {
+  color: #85899b;
+}
+
+
+/* =========================
+   AUTHORITY RESPONSE
+========================= */
+
+.authority-response {
+  margin-top: 28px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 14px;
+
+  padding: 18px 20px;
+
+  background: #eef8f7;
+
+  border: 1px solid #cfe6e5;
+
+  border-radius: 10px;
+}
+
+.authority-response-icon {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #dcefee;
+
+  color: #0f6f73;
+}
+
+.authority-response-content h3 {
+  margin: 0 0 5px;
+
+  color: #173d4a;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.authority-response-content p {
+  margin: 0;
+
+  color: #607983;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   NOTE
+========================= */
+
+.track-note {
+  margin-top: 28px;
+
+  padding: 15px 17px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  background: rgba(86, 107, 209, 0.06);
+
+  border: 1px solid rgba(86, 107, 209, 0.25);
+
+  border-radius: 9px;
+}
+
+.note-icon {
+  width: 23px;
+  height: 23px;
+
+  border: 1px solid #566bd1;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #566bd1;
+
+  font-size: 13px;
+
+  flex-shrink: 0;
+}
+
+.track-note strong {
+  color: #bfc5e8;
+
+  font-size: 11px;
+}
+
+.track-note p {
+  color: #777b8b;
+
+  font-size: 10px;
+
+  margin-top: 3px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.track-footer {
+  width: 100%;
+
+  min-height: 55px;
+
+  background: #07090e;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 60px;
+
+  padding: 10px 30px;
+
+  flex-shrink: 0;
+}
+
+.track-footer-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #aaaab5;
+
+  font-size: 10px;
+}
+
+.track-footer-item svg {
+  color: #566bd1;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+
+  .track-header {
+    height: 120px;
+  }
+
+  .track-header-content {
+    padding: 15px 20px;
+  }
+
+  .track-logo {
+    width: 55px;
+    height: 55px;
+  }
+
+  .track-college-brand {
+    gap: 12px;
+  }
+
+  .track-college-info h2 {
+    font-size: 15px;
+  }
+
+  .track-location,
+  .track-tagline {
+    font-size: 9px;
+  }
+
+  .track-back-btn {
+    padding: 8px 12px;
+
+    font-size: 11px;
+  }
+
+  .track-main {
+    padding: 25px 15px 40px;
+  }
+
+  .track-card {
+    padding: 27px 30px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .track-header {
+    height: auto;
+
+    min-height: 105px;
+  }
+
+  .track-header-content {
+    padding: 14px;
+
+    gap: 12px;
+  }
+
+  .track-college-brand {
+    gap: 9px;
+  }
+
+  .track-logo {
+    width: 48px;
+    height: 48px;
+
+    padding: 3px;
+  }
+
+  .track-college-info h2 {
+    font-size: 11px;
+
+    line-height: 1.25;
+  }
+
+  .track-location,
+  .track-tagline {
+    font-size: 7px;
+  }
+
+  .track-back-btn {
+    padding: 7px;
+
+    font-size: 0;
+  }
+
+  .track-back-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .track-main {
+    padding: 18px 10px 30px;
+  }
+
+  .track-card {
+    padding: 22px 17px;
+
+    border-radius: 11px;
+  }
+
+  .track-heading {
+    margin-bottom: 22px;
+  }
+
+  .track-heading h1 {
+    font-size: 24px;
+  }
+
+  .track-heading p {
+    font-size: 11px;
+  }
+
+  .track-form-group label {
+    font-size: 13px;
+  }
+
+  .track-empty {
+    padding: 28px 18px;
+  }
+
+  .detail-row {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 4px;
+  }
+
+  .detail-row strong {
+    text-align: left;
+  }
+
+  .status-timeline {
+    padding-left: 2px;
+  }
+
+  .track-note {
+    padding: 13px;
+  }
+
+  .track-footer {
+    display: none;
+  }
+
+
+  /* Complaint list on mobile */
+
+  .track-result
+    div[style*="border-radius: 12px"] {
+    padding: 16px !important;
+  }
+
+  .track-result
+    div[style*="border-radius: 12px"]
+    > div {
+    align-items: flex-start !important;
+  }
+
+  .track-result
+    div[style*="border-radius: 12px"]
+    button {
+    padding: 9px 13px !important;
+  }
+
+  .status-badge {
+    font-size: 10px;
+
+    padding: 6px 9px;
+  }
+}
